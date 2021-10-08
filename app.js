@@ -15,6 +15,10 @@ var fetchbyUser=require('./routes/twitter/tweetsByUser');
 var fetchByPlace=require('./routes/twitter/tweetsByPlace');
 var fetchByTag=require('./routes/twitter/tweetByHashTag');
 
+var allCoins = require('./routes/crypto/allCoins');
+var allTokens = require('./routes/crypto/allTokens');
+var tickerPrice = require('./routes/crypto/tickerPrice');
+var founder = require('./routes/crypto/founder');
 var fetchUserDets=require('./routes/github/userPofByUserName');
 var sortByStar=require('./routes/github/sortBystars');
 var issueList=require('./routes/github/listCommits');
@@ -39,6 +43,10 @@ app.use('/twitter/',fetchbyUser);
 app.use('/twitter/',fetchByPlace);
 app.use('/twitter/',fetchByTag);
 
+app.use('/crypto/coins', allCoins);
+app.use('/crypto/tokens', allTokens);
+app.use('/crypto/quote', tickerPrice);
+app.use('/crypto/team', founder);
 app.use('/github',fetchUserDets);
 app.use('/github',sortByStar);
 app.use('/github',issueList);
