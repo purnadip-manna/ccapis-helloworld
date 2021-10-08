@@ -2,12 +2,17 @@ var express = require('express');
 var needle = require('needle');
 var router = express.Router();
 
-
 router.get('/', function(req, res, next) {
-    const latitude = req.query.latitude;
-    const longitude = req.query.longitude;
-    let weatherAPI = "api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&appid=fd369556a5351344de1d2cf51f4bfb47";
-    console.log(weatherAPI);
+    let weatherAPI = "";
+    if(req.query.pin_code){
+        const pinCode = req.query.pin_code;
+        weatherAPI = "api.openweathermap.org/data/2.5/weather?zip="+pinCode+",in&appid=fd369556a5351344de1d2cf51f4bfb47";
+    }
+    else{
+        const latitude = req.query.latitude;
+        const longitude = req.query.longitude;
+        weatherAPI = "api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&appid=fd369556a5351344de1d2cf51f4bfb47";
+    }
 
     needle('get', weatherAPI)
     .then(function(resp) {
