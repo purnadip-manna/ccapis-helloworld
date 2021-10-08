@@ -1,11 +1,10 @@
+/* Task 3 : Search Tweets with location radius */
+
 var express = require('express');
 var router = express.Router();
 const dotenv = require("dotenv");
 var needle=require('needle');
 var Twitter = require('twitter');
-
-/* Task 3 : Search Tweets with location radius */
-
 
 dotenv.config();
 

@@ -1,20 +1,26 @@
+/* Task 2 : Search for Weather by latitude or longitude / PinCode */
+
 var express = require('express');
 var needle = require('needle');
+const dotenv = require('dotenv');
 var router = express.Router();
 
+dotenv.config();
+const WEATHER_API = process.env.WEATHER_API_KEY;
+
 router.get('/', function(req, res, next) {
-    let weatherAPI = "";
+    let weatherAPI_url = "";
     if(req.query.pin_code){
         const pinCode = req.query.pin_code;
-        weatherAPI = "api.openweathermap.org/data/2.5/weather?zip="+pinCode+",in&appid=fd369556a5351344de1d2cf51f4bfb47";
+        weatherAPI_url = "api.openweathermap.org/data/2.5/weather?zip="+pinCode+",in&appid="+WEATHER_API;
     }
     else{
         const latitude = req.query.latitude;
         const longitude = req.query.longitude;
-        weatherAPI = "api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&appid=fd369556a5351344de1d2cf51f4bfb47";
+        weatherAPI_url = "api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&appid="+WEATHER_API;
     }
 
-    needle('get', weatherAPI)
+    needle('get', weatherAPI_url)
     .then(function(resp) {
         const stsCode = resp.body.cod;
         if(stsCode == 400)

@@ -1,13 +1,18 @@
+/* Task 1 : Get Weather by City */
+
 var express = require('express');
 var needle = require('needle');
+const dotenv = require('dotenv');
 var router = express.Router();
 
+dotenv.config();
+const WEATHER_API = process.env.WEATHER_API_KEY;
 
 router.get('/:city_name', function(req, res, next) {
     const cityName = req.params.city_name;
-    let weatherAPI = "api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid=fd369556a5351344de1d2cf51f4bfb47";
+    let weatherAPI_url = "api.openweathermap.org/data/2.5/weather?q="+cityName+"&appid="+WEATHER_API;
 
-    needle('get', weatherAPI)
+    needle('get', weatherAPI_url)
     .then(function(resp) { 
         const stsCode = resp.body.cod;
         if(stsCode == 400)

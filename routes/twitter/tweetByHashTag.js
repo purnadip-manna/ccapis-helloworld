@@ -1,10 +1,10 @@
+/* Task 2 : Get Tweets by hashTag */
+
 var express = require('express');
 var router = express.Router();
 const dotenv = require("dotenv");
 var needle=require('needle');
 var Twitter = require('twitter');
-
-/* Task 2 : Get Tweets by hashTag */
 
 dotenv.config();
 

@@ -1,15 +1,19 @@
+/* Task 2: Get Astronomy Pictures for the given month. */
+
 var express = require('express');
 var needle = require('needle');
+const dotenv = require('dotenv');
 const getMonthno = require('../../getMonthNo');
 var router = express.Router();
 
-/* Task 2: Get Astronomy Pictures for the given month. */
+dotenv.config();
+const NASA_API = process.env.NASA_API_KEY;
 
 router.get('/:year/:month', function(req, res, next) {
     const year = req.params.year;
     const month = req.params.month.toLowerCase();
     const monthNo = getMonthno[month];
-    let nasaAPI = "https://api.nasa.gov/planetary/apod?start_date="+year+"-"+monthNo+"-1&end_date="+year+"-"+(monthNo+1)+"-1&api_key=8kvcLXpBlinXXiCYJNyP7e2ASyoh2MKIhHmmDOrw";
+    let nasaAPI = "https://api.nasa.gov/planetary/apod?start_date="+year+"-"+monthNo+"-1&end_date="+year+"-"+(monthNo+1)+"-1&api_key="+NASA_API;
 
     needle('get', nasaAPI)
     .then(function(resp) { 

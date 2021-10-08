@@ -3,8 +3,12 @@
 
 var express = require('express');
 var needle = require('needle');
+const dotenv = require('dotenv');
 var router = express.Router();
 
+
+dotenv.config();
+const NASA_API = process.env.NASA_API_KEY;
 
 let currentMonth = new Date().getMonth() + 1;
 let currentYear = new Date().getFullYear();
@@ -13,7 +17,7 @@ let currentYear = new Date().getFullYear();
 router.get('/', function(req, res, next) {
   // Generate the url
   let date =  currentYear + "-" + currentMonth + "-" + "01";
-  url = `https://api.nasa.gov/planetary/apod?date=${date}&api_key=o9uI7rbvjeVWWfRwoDe8ZJF8JTmbhFlilT4XT9bw`;
+  url = `https://api.nasa.gov/planetary/apod?date=${date}&api_key=${NASA_API}`;
 
   // Fetch data with needle
   needle('get', url)

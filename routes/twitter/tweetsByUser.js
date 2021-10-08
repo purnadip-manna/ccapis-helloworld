@@ -1,10 +1,9 @@
+/* Task 1 : Get Tweets by username */ 
+
 var express = require('express');
 var router = express.Router();
 const dotenv = require("dotenv");
 var needle=require('needle');
-
-/* Task 1 : Get Tweets by username */ 
-
 
 dotenv.config();
 const bearerToken=process.env.bearerToken

@@ -1,13 +1,17 @@
+/* Task 4: Get Earth Polychromatic Imaging Camera data. */
+
 var express = require('express');
+const dotenv = require('dotenv');
 var router = express.Router();
 var needle=require('needle');
 
-/* Task 4: Get Earth Polychromatic Imaging Camera data. */
+dotenv.config();
+const NASA_API = process.env.NASA_API_KEY;
 
 router.get('/:date', function(req, res, next) {
     const date = req.params.date;
-    const filterResult=[]
-    const pcImg="https://api.nasa.gov/EPIC/api/natural/date/"+date+"?api_key=8kvcLXpBlinXXiCYJNyP7e2ASyoh2MKIhHmmDOrw"
+    const filterResult=[];
+    const pcImg="https://api.nasa.gov/EPIC/api/natural/date/"+date+"?api_key="+NASA_API;
     needle('get', pcImg)
     .then(function(resp) { 
         const result=resp.body;
