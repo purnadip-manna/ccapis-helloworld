@@ -25,6 +25,9 @@ fill your team details before writing any code
         - weatherCity.js (Task:1)
         - weatherSearch.js (Task:2)
     - twitter (Section 3)
+        - tweetsByUser.js (Task: 1)
+        - tweetByHashTag.js (Task: 2)
+        - tweetsByPlace.js (Task: 3)
     - crypto (Section 4)
     - github (Section 5)
 

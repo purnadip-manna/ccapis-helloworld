@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 const dotenv = require("dotenv");
 var needle=require('needle');
+
+/* Task 1 : Get Tweets by username */ 
+
+
 dotenv.config();
 const bearerToken=process.env.bearerToken
 
@@ -38,7 +42,7 @@ router.get('/user/:user_name',(req,res,next)=>{
                     }
                 }).then((r)=>{
                     const tweets=[];
-                    if(r.body.data.lenght!==0){
+                    if(r.body.data.length!==0){
                         for(var i=0;i<r.body.data.length;i++){
                             tweets.push(
                                 {
