@@ -1,8 +1,8 @@
+/* Task 3: Get Coin Ticker Price */
+
 const express = require('express');
 const router = express.Router();
 const needle = require('needle');
-const gc = require('./getCoinID');
-
 
 router.get('/:name', function (req, res, next) {
     var url = "https://api.coinpaprika.com/v1/coins";
