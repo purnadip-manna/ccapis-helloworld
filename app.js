@@ -11,6 +11,10 @@ var weatherCity = require('./routes/weather/weatherCity');
 var weatherSearch = require('./routes/weather/weatherSearch');
 
 
+var fetchbyUser=require('./routes/twitter/tweetsByUser');
+var fetchByPlace=require('./routes/twitter/tweetsByPlace');
+var fetchByTag=require('./routes/twitter/tweetByHashTag');
+
 var app = express();
 
 app.use(logger('dev'));
@@ -26,6 +30,9 @@ app.use('/nasa/earth-poly-image',polyChrom);
 app.use('/weather/city/', weatherCity);
 app.use('/weather/search', weatherSearch);
 
+app.use('/twitter/',fetchbyUser);
+app.use('/twitter/',fetchByPlace);
+app.use('/twitter/',fetchByTag);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
