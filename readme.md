@@ -32,6 +32,6 @@ fill your team details before writing any code
     - github (Section 5)
         - userPofBYUserName.js (Task :1)
         - sortByStars.js (Task: 2)
-        - listIssue.js (Task:4)
+        - listCommits.js (Task:4)
 
 
