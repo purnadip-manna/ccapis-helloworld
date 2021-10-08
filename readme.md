@@ -30,5 +30,8 @@ fill your team details before writing any code
         - tweetsByPlace.js (Task: 3)
     - crypto (Section 4)
     - github (Section 5)
+        - userPofBYUserName.js (Task :1)
+        - sortByStars.js (Task: 2)
+        - listCommits.js (Task:4)
 
 
